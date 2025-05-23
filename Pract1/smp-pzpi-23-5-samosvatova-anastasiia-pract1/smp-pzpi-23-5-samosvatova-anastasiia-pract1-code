@@ -1,0 +1,62 @@
+#!/bin/bash
+
+ printRow() {
+ local rowWidth=$1
+ local totalWidth=$2
+ local symbol=$3
+ local padding=$(( (totalWidth - rowWidth) / 2 ))
+ printf "%*s" "$padding" ""
+ for ((i=0; i<rowWidth; i++)); do
+ printf "%s" "$symbol"
+ done
+ echo
+ }
+
+ if [[ $# -ne 2 ]]; then
+ echo "Помилка: потрібно вказати висоту дерева та ширину снігу.">&2
+ exit 1
+ fi
+
+ treeHeight=$1
+ snowWidth=$2
+ if ! [[ $treeHeight =~ ^[0-9]+$ && $snowWidth =~ ^[0-9]+$ ]] || ((
+ treeHeight < 7 || snowWidth < 7 )); then
+ echo "Помилка: параметри мають бути додатні числа не менше 7." >&2
+ exit 1
+ fi
+ ((snowWidth % 2 == 0)) && ((snowWidth--))
+
+ maxWidth=$((2 * (treeHeight / 2) - 1))
+ ((snowWidth != maxWidth)) && { echo "Ширина снігу має дорівнювати максимальній ширині дерева." >&2; exit 1; }
+
+ currentSymbol="#"
+ printf "%*s*\n" $(((snowWidth - 1) / 2)) ""
+
+ layerHeight=$(( (snowWidth - 3) / 2 ))
+ availableLines=$(( treeHeight - 4 ))
+ oneLayerHeight=$(( 2 * layerHeight ))
+ layerCount=$(( availableLines / oneLayerHeight ))
+
+ for ((layer=0; layer<layerCount; layer++)); do
+ for ((side=0; side<2; side++)); do
+ rowWidth=3
+ rowCount=0
+ while ((rowCount < layerHeight)); do
+ printRow "$rowWidth" "$snowWidth" "$currentSymbol"
+ ((rowWidth+=2))
+ ((rowCount++))
+ currentSymbol=$([[ "$currentSymbol" == "#" ]] && echo "*" || echo "#")
+
+ done
+ done
+ done
+
+ for i in 1 2; do
+ printRow 3 "$snowWidth" "#"
+ done
+
+ count=0
+ until ((count == snowWidth)); do
+ printf "*"
+ ((count++))
+ done
