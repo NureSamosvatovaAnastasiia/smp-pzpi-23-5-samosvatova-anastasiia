@@ -1,0 +1,213 @@
+/* базовий reset + універсальний стиль */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1f1f1f;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  box-shadow: 0 2px 10px #000;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background: #222;
+  padding: 15px 0;
+}
+
+nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+nav a.active, nav a:hover {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #2c2c2c;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #000;
+  flex-grow: 1;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Products */
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-item {
+  background: #3a3a3a;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 8px #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-weight: 700;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.product-price {
+  font-size: 18px;
+  color: #8fbc8f;
+}
+
+.product-qty {
+  width: 60px;
+  padding: 6px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #222;
+  color: #eee;
+  margin-right: 15px;
+}
+
+.add-button {
+  background-color: #4caf50;
+  border: none;
+  padding: 10px 20px;
+  color: #eee;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.add-button:hover {
+  background-color: #369636;
+}
+
+/* Cart table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #3a3a3a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #000;
+}
+
+th, td {
+  padding: 15px 10px;
+  text-align: center;
+}
+
+th {
+  background: #4caf50;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background: #2c2c2c;
+}
+
+a.remove-link {
+  color: #f44336;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a.remove-link:hover {
+  text-decoration: underline;
+}
+
+.empty-cart {
+  text-align: center;
+  font-size: 22px;
+  padding: 60px 0;
+  color: #bbb;
+}
+
+/* Додаткові форми і кнопки */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #eee;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #4caf50;
+}
+
+button {
+  background-color: #4caf50;
+  border: none;
+  padding: 10px 20px;
+  color: #eee;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+button:hover {
+  background-color: #369636;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Підпис до полів */
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
